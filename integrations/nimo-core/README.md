@@ -1,3 +1,2 @@
 # NIMO-CORE Contract
-
-NIMO-CORE is the trust boundary between AI planning and machine execution. It resolves context, authenticates the user/session/machine, checks role permissions, validates ActionPlans, converts approved steps into allowlisted Commands, dispatches them, validates results, and records audit events.
+NIMO-CORE is the authorization/orchestration boundary: authenticate, resolve context, authorize, validate ActionPlans, convert approved steps to allowlisted Commands, dispatch to Desktop Agent, validate results and audit.

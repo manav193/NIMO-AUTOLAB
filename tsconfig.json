@@ -1,4 +1,1 @@
-{
-  "compilerOptions": { "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext", "strict": true, "noEmit": true, "skipLibCheck": true },
-  "include": ["packages/**/*.ts", "server/**/*.ts", "tests/**/*.ts"]
-}
+{"compilerOptions":{"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext","strict":true,"noEmit":true,"skipLibCheck":true},"include":["packages/**/*.ts","server/**/*.ts","integrations/**/*.ts","tests/**/*.ts"]}
