@@ -17,9 +17,9 @@ test("executor blocks paths outside allowed roots",()=>{
   assert.equal(e.execute({...base,action:"OPEN_FILE",parameters:{path:"C:/Lab/Workspace/a.dwg"}}).status,"COMPLETED");
   assert.equal(e.execute({...base,action:"OPEN_FILE",parameters:{path:"C:/Users/Public/a.dwg"}}).status,"REJECTED");
 });
-test("runtime keeps validation before execution",()=>{
+test("runtime executes only after validation and policy checks",()=>{
   const r=new DesktopAgentRuntime({machineId:"M1",agentVersion:"0.2.0"});
-  assert.equal(r.handle({...base,action:"OPEN_APP",parameters:{app:"unknown"}}).status,"COMPLETED");
+  assert.equal(r.handle({...base,action:"OPEN_APP",parameters:{app:"unknown"}}).status,"REJECTED");
   assert.equal(r.handle({...base,action:"OPEN_APP",parameters:{app:"powershell"}}).status,"REJECTED");
 });
 test("reconnect backoff is bounded",()=>{
