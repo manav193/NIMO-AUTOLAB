@@ -2,6 +2,7 @@
   "name": "nimo-autolab",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Secure college laboratory automation platform",
   "scripts": { "test": "node --test", "typecheck": "tsc --noEmit" },
   "devDependencies": { "typescript": "^5.8.0" }
