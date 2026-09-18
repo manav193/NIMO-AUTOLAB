@@ -1,8 +1,9 @@
 # AutoDesk
 
-AutoDesk is the assignment/workspace/submission module inside NIMO-AUTOLAB.
+AutoDesk is a module inside NIMO-AUTOLAB for teacher assignments and student workspace/submission workflows.
 
-Teacher: create assignment → required software/resources → submission rules → deadline.
-Student: scan machine QR → authenticate → start lab → receive workspace → work → submit → validation/package → teacher receives submission.
+Teacher: create assignment → define software/resources/submission requirements/deadline.
 
-Phase 0 defines contracts only; execution and storage are later phases.
+Student: authenticate → start lab → receive workspace → work → submit → validate/package submission.
+
+Phase 0 defines contracts only; full workflow comes later.
