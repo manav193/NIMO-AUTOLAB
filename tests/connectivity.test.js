@@ -1,0 +1,6 @@
+import test from "node:test"; import assert from "node:assert/strict"; import {MachineAgent} from "../apps/desktop-agent/src/machine-agent.js"; import {AgentTransport} from "../apps/desktop-agent/src/transport.js"; import {createEnrollment} from "../apps/desktop-agent/src/enrollment.js"; import {isSupportedEnvelope} from "../packages/protocol/src/transport.js";
+const agent=new MachineAgent("LAB-A-PC-01"); const transport=new AgentTransport(agent);
+test("short-lived enrollment is created",()=>{const r=createEnrollment({machineId:"M1",labId:"L1",displayName:"PC 01",platform:"windows",agentVersion:"0.2.0",enrollmentCode:"one-time"}); assert.equal(r.status,"ENROLLED"); assert.ok(new Date(r.expiresAt)>new Date(r.issuedAt));});
+test("transport accepts valid envelope",()=>assert.equal(isSupportedEnvelope({version:"1",messageId:"m",type:"HEARTBEAT",machineId:"M1",timestamp:new Date().toISOString(),payload:{}}),true));
+test("transport rejects malformed envelope",()=>assert.equal(isSupportedEnvelope({version:"1",type:"HEARTBEAT"}),false));
+test("transport routes only structured commands",()=>assert.equal(transport.handle({type:"COMMAND",command:{commandId:"c",sessionId:"s",machineId:"LAB-A-PC-01",action:"OPEN_APP",parameters:{app:"Chrome"},authorizationId:"a"}}).status,"COMPLETED"));

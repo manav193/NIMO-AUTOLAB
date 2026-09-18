@@ -1,0 +1,3 @@
+export type AgentEventType="ENROLLMENT_REQUEST"|"HEARTBEAT"|"COMMAND_REQUEST"|"COMMAND_RESULT";
+export interface AgentEnvelope<T=unknown>{version:"1";messageId:string;type:AgentEventType;machineId:string;timestamp:string;payload:T;}
+export function isSupportedEnvelope(value:unknown):value is AgentEnvelope { if(!value||typeof value!=="object")return false; const v=value as Record<string,unknown>; return v.version==="1"&&typeof v.messageId==="string"&&typeof v.type==="string"&&typeof v.machineId==="string"&&typeof v.timestamp==="string"&&v.payload!==undefined; }
